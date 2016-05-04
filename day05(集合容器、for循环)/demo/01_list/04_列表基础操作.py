@@ -91,7 +91,44 @@ print(list4)
 a = [1,2,3,45,56,76,87,8]
 b = 8
 c = a.index(b)
+
+
+
 if len(a)-1 == c:
     print("true")
 else:
     print("false")
+
+
+# 按元素查询下标
+list = [1,2,3,5,6,2,4,8,9,2,7]
+la = list.index(2)
+print(la)
+# 查询元素在列表的数量
+lala = list.count(2)
+print(lala)
+# 按下表位置插入元素（下标2，插入11）
+list.insert(2,11)
+print(list)
+# 从末尾添加元素
+list.append(678)
+print(list)
+# 删除并弹出末尾元素
+list.pop()
+print(list)
+# 按下标删除元素
+del list[0]
+print(list)
+# 函数用于在列表末尾一次性追加另一个序列中的多个值
+list.extend([34,43,545,67])
+print(list)
+# 移除元素
+list.remove(11)
+print(list)
+list.remove(2)
+print(list)
+# 集合容器嵌套取值并修改
+k = ([2,3,1,3,4,5],'老王',546)
+print(k)
+k[0][5] = 66
+print(k)
