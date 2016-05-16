@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>表格标签</title>
+</head>
+<body>
+   <!--
+    表格标签，是块级元素。
+   -->
+    <table border="2" width="800" cellspacing="0">
+        <tr>
+            <th width="200">数学</th>
+            <th>语文</th>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+    </table>
+    <hr>
+    <table border="1" width="800" cellspacing="0">
+        <tr>
+            <th>姓名</th>
+        <th colspan="2">电话</th>
+        </tr>
+        <tr>
+            <td width="200">老王</td>
+            <td width="300">11111111111</td>
+            <td>22222222222</td>
+        </tr>
+    </table>
+   <hr>
+   <table border="1" width="800" cellspacing="0" align="center">
+       <caption>老王的简历</caption>
+       <tr>
+           <th align="left">姓名</th>
+           <td bgcolor="red">老王</td>
+       </tr>
+       <tr>
+           <th rowspan="2">电话</th>
+           <td>11111111111</td>
+       </tr>
+       <tr>
+           <td>22222222222</td>
+       </tr>
+   </table>
+   <table border="1" width="800" cellspacing="0" cellpadding="10" background="./images/东北F4.jpg">
+       <tr>
+           <td>
+               <p>这是一个段落。</p>
+               <p>这是另一个段落。</p>
+           </td>
+           <td>这个单元包含一个表格：
+               <table border="1">
+                   <tr>
+                       <td>A</td>
+                       <td>B</td>
+                   </tr>
+                   <tr>
+                       <td>C</td>
+                       <td>D</td>
+                   </tr>
+               </table>
+           </td>
+       </tr>
+       <tr>
+           <td>这个单元包含一个列表：
+               <ul>
+                   <li>苹果</li>
+                   <li>香蕉</li>
+                   <li>菠萝</li>
+               </ul>
+           </td>
+           <td>HELLO</td>
+       </tr>
+       <tr>
+           <td>这个单元包含一个图片：
+               <img src="images/宋小宝.jpg" alt="">
+           </td>
+           <td background="./images/中国茶道.jpg">HELLO</td>
+       </tr>
+   </table>
+   <hr>
+   <table border="1" width="800" cellspacing="0" >
+       <thead>
+            <tr>
+                <th valign="top" height="100">数学</th>
+                <th>语文</th>
+            </tr>
+       </thead>
+       <tbody>
+            <tr>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>344</td>
+            </tr>
+       </tbody>
+       <tfoot>
+           <tr>
+               <td colspan="2"><a href="#">1</a><a href="#">2</a><a href="#">3</a></td>
+           </tr>
+       </tfoot>
+   </table>
+</body>
+</html>

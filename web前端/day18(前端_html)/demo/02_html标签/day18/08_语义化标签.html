@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>语义化标签</title>
+</head>
+<body>
+   <!--
+    ul li hr dl dt dd标签，是块级元素。
+    a标签，是行级元素。
+   -->
+   <ul>
+       <li>床前明月光</li>
+       <li>疑是地上霜</li>
+       <li>举头望明月</li>
+       <li>低头思故乡</li>
+   </ul>
+   <ul style="list-style: none">
+       <li>床前明月光</li>
+       <li>疑是地上霜</li>
+       <li>举头望明月</li>
+       <li>低头思故乡</li>
+   </ul>
+   <ul style="list-style: lower-alpha">
+       <li>床前明月光</li>
+       <li>疑是地上霜</li>
+       <li>举头望明月</li>
+       <li>低头思故乡</li>
+   </ul>
+   <ul type="A">
+       <li>床前明月光</li>
+       <li>疑是地上霜</li>
+       <li>举头望明月</li>
+       <li>低头思故乡</li>
+   </ul>
+   <ol>
+       <li>床前明月光</li>
+       <li>疑是地上霜</li>
+       <li>举头望明月</li>
+       <li>低头思故乡</li>
+   </ol>
+   <ul type="A">
+       <li>床前明月光</li>
+       <li>疑是地上霜</li>
+       <li>举头望明月
+           <ul type="square">
+                <li>床前明月光</li>
+                <li>疑是地上霜</li>
+           </ul>
+       </li>
+       <li>低头思故乡</li>
+   </ul>
+   <hr/>
+   <a href="http://www.baidu.com" target="_self">详情请点击，会有惊喜的。</a>
+   <br/>
+   <!--
+    ../ 相对与当前路径的上一层路径
+    ./  相对于当前路径
+   -->
+   <a href="../day17/images/东北F4.jpg" target="_self">详情请点击，会有惊喜的。</a>
+   <br/>
+   <a href="./01_标题标签.html" target="_self">详情请点击，会有惊喜的。</a>
+   <hr/>
+    <dl>
+        <dt>静夜思</dt>
+        <dd>床前明月光</dd>
+        <dd>床前明月光</dd>
+        <dd>床前明月光</dd>
+    </dl>
+</body>
+</html>
