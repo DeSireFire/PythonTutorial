@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>08_css盒子模型.html</title>
+    <!--
+    盒子模型    top right bottom left
+    1、border
+    2、padding
+    3、margin
+
+
+    -->
+    <style type="text/css">
+        #d1{
+            height: 200px;
+            border-style: solid;
+            border-width:10px;
+            /*border-color: red;*/
+            /*border-left-width: 20px;*/
+            /*border: dotted 20px red;*/
+            /*border-width:10px 20px*/
+            /*border-width:10px 15px 20px 25px*/
+        }
+        #d2{
+            background-color: antiquewhite;
+            height:200px;
+            /*padding: 40px;*/
+            /*padding: 10px 50px;*/
+            padding: 10px 20px 30px 40px;
+            border: dotted 2px red;
+        }
+        #d3{
+            width: 400px;
+            height:200px;
+            background-color: burlywood;
+        }
+        #d31{
+            width: 300px;
+            height: 50px;
+            background-color: blue;
+        }
+        #d32{
+            width: 300px;
+            height: 50px;
+            background-color: red;
+            margin-top: 10px;
+        }
+        /*#d4{
+            width: 200px;
+            height: 200px;
+            border: solid 1px red;
+            padding-left: 100px;
+        }
+        #d41{
+            width: 100px;
+            height: 100px;
+            border: dotted 1px blue;
+        ｝*/
+        #d4{
+            width:300px;
+            height: 150px;
+            border: solid 1px red;
+            padding-top: 50px;
+        }
+        #d41{
+            width: 100px;
+            height: 100px;
+            border: dotted 1px blue;
+            margin: 0 auto;
+        ｝
+    </style>
+</head>
+<body>
+    <div id="d1">
+        盒子1
+    </div>
+    <div id="d2">
+        记者11日从陕西省公安厅有关部门、宁陕县委有关部门获悉，10日23时34分许，西汉高速陕西段发生一起交通事故，目前已造成36人死亡13人受伤。据初步了解，事故车辆为河南经营的一辆客运车，从成都发往洛阳，在途经西汉高速秦岭隧道时，因撞到隧道墙壁发生事故，事故造成36人死亡，13人受伤，伤者已被紧急送医。
+    </div>
+    <div id="d3">
+        <div id="d31">
+            盒子1
+        </div>
+        <div id="d32">
+            盒子2
+        </div>
+        <div id="d33">
+            <div id="d331">盒子3</div>
+        </div>
+
+    </div>
+    <div id="d4">
+        <div id="d41">盒子4</div>
+    </div>
+</body>
+</html>

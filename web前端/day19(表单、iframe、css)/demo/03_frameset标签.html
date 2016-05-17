@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>框架标签</title>
+</head>
+<!--
+<frameset cols="200,100,*">
+    <frame src="./doc/01_left.html"/>
+    <frame src="./doc/02_right.html"/>
+</frameset>
+-->
+<frameset rows="100,*,100" frameborder="1">
+    <frame src="./doc/03_top.html" noresize="noresize"/>
+    <frameset cols="200,*">
+        <frame src="./doc/01_left.html" noresize="noresize"/>
+        <frame src="./doc/02_right.html" name="laowang" noresize="noresize">
+    </frameset>
+    <frame src="./doc/04_bottom.html" noresize="noresize"/>
+</frameset>
+<noframeset>
+    <body>
+        你的浏览器不支持frameset，请更换成火狐或者升级浏览器。
+    </body>
+</noframeset>
+</html>
