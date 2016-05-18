@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>04_css定位.html</title>
+    <style type="text/css">
+        h2{
+            border: solid 1px red;
+        }
+        h2.pos_left
+        {
+            position:relative;
+            left:-100px
+        }
+        h2.pos_right
+        {
+            position:relative;
+            left:20px
+        }
+        h2.pos_abs
+        {
+            position:absolute;
+            left:100px;
+            top:200px
+        }
+        .adv1,.adv2{
+            width: 100px;
+            height: 500px;
+            border: solid 1px red;
+            position: absolute;
+        }
+        .adv1{
+            top: 100px;
+            left: 20px;
+        }
+        .adv2{
+            top: 100px;
+            right: 20px;
+        }
+        .adv2_01{
+            width: 50px;
+            height: 50px;
+            border: solid 1px red;
+            position:absolute;
+            top: 50px;
+            right: 10px;
+        }
+        .adv12{
+            width: 200px;
+            height: 200px;
+            border: solid 3px blue;
+            position:absolute;
+            top: 100px;
+            right: 50px;
+            background-color: #0000FF;
+            z-index: 100;
+        }
+        .adv11{
+            width: 100px;
+            height: 100px;
+            border: solid 3px blue;
+            position:absolute;
+            top: 100px;
+            right: 50px;
+            background-color: #00FF00;
+            z-index: 101;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>这是位于正常位置的标题</h2>
+    <h2 class="pos_left">这个标题相对于其正常位置向左移动</h2>
+    <h2 class="pos_right">这个标题相对于其正常位置向右移动</h2>
+    <p>相对定位会按照元素的原始位置对该元素进行移动。</p>
+    <p>样式 "left:-20px" 从元素的原始左侧位置减去 20 像素。</p>
+    <p>样式 "left:20px" 向元素的原始左侧位置增加 20 像素。</p>
+    <hr/>
+    <h2 class="pos_abs">这是带有绝对定位的标题</h2>
+    <p>通过绝对定位，元素可以放置到页面上的任何位置。下面的标题距离页面左侧 100px，距离页面顶部 150px。</p>
+    <div class="adv1">
+        <a href="#">广告1</a>
+    </div>
+    <div class="adv2">
+        <div class="adv2_01">
+            <a href="#">广告2</a>
+        </div>
+    </div>
+    <div class="adv11">
+        div1
+    </div>
+    <div class="adv12">
+        div2
+    </div>
+</body>
+</html>

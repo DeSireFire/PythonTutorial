@@ -1,0 +1,12 @@
+.d1{
+    width: 400px;
+    height: 500px;
+    border: solid 1px red;
+    background-image: url("../images/老习.jpg");
+    /*background-repeat: repeat-x repeat-y;*/
+    background-repeat: no-repeat;
+    /*background-position: 10px 30px;*/
+    /*background-attachment: fixed;*/
+    background-position: bottom right;
+    background-color: aliceblue;
+}

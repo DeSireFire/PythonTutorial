@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>02_块元素、内联元素、内联块元素.html</title>
+    <style type="text/css">
+        *{
+            font: 16px 仿宋
+        }
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            border: solid 1px red;
+        }
+        #nav{
+            border: 0
+        }
+
+        #nav span{
+            width: 200px;
+            height: 75px;
+            border: solid 1px red;
+            display: inline-block;
+            text-align: center;
+            padding-top: 25px;
+        }
+        #nav a{
+            width: 100px;
+            display: inline-block;
+            text-decoration: none;
+            height: 50px;
+            line-height: 50px;
+        }
+        #nav .b1{
+            border-right-width: 0px;
+        }
+        .c1{
+            color: red;
+        }
+        .c2{
+            font-size: 30px;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>中国追求的是共同发展。我们既要让自己过得好,也要让别人过得好。”习近平用这句话生动概括了当前国际形势下，中国对世界秩序的构想与主张。
+            这五年，中国这个世界第二大经济体，在他的倡议和理念引领下，走到了世界舞台中央，办了不少大事，引发国际社会广泛关注和积极评价，获得许多国家积极响应和支持。
+            一、为全球治理贡献中国智慧，用大国担当“实力圈粉”
+            在西方传统的国际治理话语中，充斥着各种“陷阱”：“修昔底德陷阱”鼓吹零和博弈，“金德尔伯格陷阱”渲染全球秩序真空，“中等收入陷阱”被用作唱衰新兴经济体……
+            这些“陷阱”虚实如何，能否避开？习近平提出一系列新理念应对：以合作共赢为核心的新型国际关系；共同、综合、合作、可持续的新安全观；人类命运共同体理念……
+            行胜于言。习近平曾多次强调：“一分部署，九分落实，中国说过的话一定算数。”较之以前，中国这五年提供了越来越多带有“中国烙印”的公共产品，在国际舞台上“实力圈粉”。
+            中国宣布建立200亿元人民币的“中国气候变化南南合作基金”，设立总额为10亿美元的中国—联合国和平与发展基金。
+            在美国宣布要退出气候变化《巴黎协定》时，中国郑重承诺将“坚定不移地做全球气候治理进程的维护者和推动者”。
+            积极参与联合国维和、开展国际人道主义救援。索马里护航、尼泊尔地震救援、也门撤侨等一系列重大事件，中国冲在一线、表现优异，赢得世界尊敬。</p>
+    </div>
+    <div>
+        <span>隔壁</span>
+        <b>老王</b>
+    </div>
+    <div>
+        <input type="text"/>
+        <input type="text"/>
+    </div>
+    <hr/>
+    <hr/>
+    <hr/>
+    <div>
+        <img src="./images/01.jpg" alt="">
+    </div>
+    <div id="nav">
+        <span class="b1"><a href="#">链接1</a></span><span class="b1"><a href="#">链接2</a></span><span><a href="#">链接3</a></span>
+    </div>
+    <div class="c1 c2">
+    老王
+    </div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</body>
+</html>

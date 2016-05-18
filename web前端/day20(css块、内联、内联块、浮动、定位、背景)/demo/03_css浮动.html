@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>03_浮动.html</title>
+    <style type="text/css">
+        .clearBoth{
+            clear: both;
+        }
+        *{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #d1,#d2,#d3{
+            width: 500px;
+            height:200px;
+            border: solid 1px black;
+            float: left;
+        }
+
+        #d1{
+            background-color: red;
+            /*float: right;*/
+        }
+        #d2{
+            background-color: green;
+            /*clear: both;*/
+        }
+        #d3{
+            background-color: blue;
+        }
+        #d4{
+            width: 200px;
+        }
+        #d4 img{
+            float: right;
+        }
+
+        .out{border:1px solid #F00;}
+        .inner1{width:200px; height:200px; float: left;  border:1px solid #00F;}
+        .inner2{width:200px; height:200px; float: left; border:1px solid #0F0;}
+
+
+        .clearfix:after {
+            content: ".";     /*内容为“.”就是一个英文的句号而已。也可以不写。*/
+            display: block;   /*加入的这个元素转换为块级元素。*/
+            clear: both;      /*清除左右两边浮动。*/
+            visibility: hidden; /*可见度设为隐藏。注意它和display:none;是有区别的。visibility:hidden;仍然占据空间，只是看不到而已；*/
+            line-height: 0;     /*行高为0；*/
+            height: 0;          /*高度为0；*/
+            font-size:0;        /*字体大小为0；*/
+        }
+        .clearfix { *zoom:1;}   /*这是针对于IE6的，因为IE6不支持:after伪类，这个神奇的zoom:1让IE6的元素可以清除浮动来包裹内部元素。具体意思的话，不用深究，听说微软的工程师自己都无法解释清楚。*/
+
+
+        .u2 li{
+            float: left;
+        }
+
+        .d5{
+            border: solid 1px red;
+            width: 300px;
+        }
+        .d5_1{
+            width: 64px;
+            height:85px;
+            float: left;
+        }
+        .d5_2{
+            float: left;
+        }
+        .d5_01{
+            padding: 10px 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1">div1</div>
+    <!--<div style="clear: both"></div>-->
+    <div id="d2">div2</div>
+    <div id="d3">div3</div>
+
+    <div id="d4" class="clearBoth">
+        <p>央视网消息：7月26日至27日，习近平<img src="./images/老习.jpg" alt="">在省部级主要领导干部“学习习近平总书记重要讲话精神，迎接党的十九大”专题研讨班开班式上发表重要讲话强调，党的十八大以来的5年，是党和国家发展进程中很不平凡的5年。我们坚定不移推进中国特色大国外交，营造了我国发展的和平国际环境和良好周边环境。本图解梳理了党的十八大以来，习近平全面、深入阐述中国特色大国外交的部分理念，开创了中国外交的新特色、新风格、新气派。</p>
+    </div>
+    <div class="out clearfix">
+        <div class="inner1">inner1</div>
+        <div class="inner2">inner2</div>
+        <!--<div class="clearBoth"></div>-->
+    </div>
+    <div>
+        <ul class="u2 clearfix">
+            <li><img src="./images/老习.jpg" alt=""></li>
+            <li><p>习近平视频集</p><p>习近平应约同美国总统通电话</p></li>
+        </ul>
+        <ul class="u2 clearfix">
+            <li><img src="./images/老习.jpg" alt=""></li>
+            <li><p>习近平视频集</p><p>习近平应约同美国总统通电话</p></li>
+        </ul>
+    </div>
+    <div class="d5">
+        <div class="d5_01 clearfix">
+            <div class="d5_1"><img src="./images/老习.jpg" alt=""></div>
+            <div class="d5_2"><p>习近平视频集</p><p>习近平应约同美国总统通电话</p></div>
+        </div>
+        <div class="d5_01 clearfix">
+            <div class="d5_1"><img src="./images/老习.jpg" alt=""></div>
+            <div class="d5_2"><p>习近平视频集</p><p>习近平应约同美国总统通电话</p></div>
+        </div>
+    </div>
+
+</body>
+</html>
