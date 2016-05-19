@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>05_操作元素的属性.html</title>
+    <style type="text/css">
+       a{
+           font-size: 30px;
+       }
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var oInput = document.getElementById('input1');
+            var oA = document.getElementById('link1');
+            var val = oInput.value;
+            var typ = oInput.type;
+            var nam = oInput.name;
+            var id1 = oInput.id;
+            console.log(val,typ,nam,id1);
+
+            //var href = oA.href;
+            var href = oA["href"];
+            var id2 = oA.id;
+            console.log(href,id2);
+
+            console.log(oA.style)
+            console.log(oA.style.color)
+            console.log(oA.style.fontSize)
+
+            oA.style.color = "black";
+            oA.style.border = "solid 1px red";
+
+            oInput.value = "老王"
+
+            var div1 = document.getElementById('div2');
+            h = div1.innerHTML
+            console.log(h)
+            t = div1.innerText
+            console.log(t)
+
+            console.log(oA.innerHTML)
+            console.log(oA.innerText)
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <h1>操作元素的属性</h1>
+    </div>
+    <div>
+        <input type="text" name="setsize" id="input1" value="20px"/>
+        <a href="http://www.laowang.com" id="link1" style="color: red">老王</a>
+    </div>
+    <div id="div2">
+        <h1>操作元素的<span>属性</span></h1>
+        <a href="#">老王</a>
+    </div>
+</body>
+</html>
