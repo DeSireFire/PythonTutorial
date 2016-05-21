@@ -1,0 +1,3 @@
+function haha(){
+    alert('haha...')
+}

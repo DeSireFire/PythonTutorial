@@ -1,0 +1,10 @@
+$(function(){
+    $("#div").html("老王")
+    alert('xx')
+})
+$(function(){
+    $("#div").html("老利")
+})
+$(document).ready(function(){
+    $("#div").html("老利2")
+})
