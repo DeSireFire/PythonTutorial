@@ -1,0 +1,17 @@
+$(function(){
+    $("#div1").mouseenter(function(){
+        $(this).attr("class","c1")
+    }).mouseout(function(){
+        $(this).attr("class","")
+    });
+    $("#btn1").click(function(){
+         alert($("#div1").html())
+    });
+    $("#btn2").click(function(){
+        alert($("#div1").text())
+    });
+    $("#btn3").click(function(){
+        $("#div1").text("<b>我不是老王</b>")
+        //$("#div1").html("<b>我不是老王</b>")
+    });
+})

@@ -1,0 +1,16 @@
+#div1{
+    width: 200px;
+    height: 100px;
+    background-color: #00FF00;
+}
+#block1{
+    border: solid 1px red;
+}
+#block2{
+    width: 200px;
+    height: 100px;
+    background-color: #00FF00;
+    position: absolute;
+    top:200px;
+    left: 200px;
+}

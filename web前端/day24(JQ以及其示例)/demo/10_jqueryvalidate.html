@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+		"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+	<title>10_jqueryvalidate.html</title>
+	<script type="text/javascript" src="./js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="./js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="./js/jquery-ui.js"></script>
+	<link rel="stylesheet" href="./css/jquery-ui.css">
+	<!--<script type="text/javascript" src="./js/10_01.js"></script>-->
+	<script type="text/javascript">
+		function  checkForm(){
+			$("#signupForm").validate({
+				rules:{
+					"userName":{
+						required:true,
+						minlength:6
+					}
+				},
+				messages:{
+					"userName":{
+						required:"用户名必填",
+						minlength:"用户名长度至少是6"
+					}
+				}
+			});
+		}
+		$(function(){
+			checkForm()
+			$("#mydate" ).datepicker();
+		});
+
+	</script>
+
+</head>
+<body>
+	<form class="cmxform" id="signupForm" method="get" action="url">
+		<p>
+			<label for="firstname">名字</label>
+			<input id="firstname" name="userName" type="text">
+			<!--<span id="firstname_erro"></span>-->
+		</p>
+		<p>
+			<input type="submit" value="提交"/>
+		</p>
+	</form>
+	<input  id="mydate"/>
+</body>
+</html>
+<!--
+1、form 提交事件 submit
+
+2、jquery validate 怎么引入
+
+1、引入jquery
+2、引入对应的插件的js
+-->

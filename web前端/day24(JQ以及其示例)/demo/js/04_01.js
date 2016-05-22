@@ -1,0 +1,29 @@
+$(function(){
+    $("#btn1").click(function(){
+        //$("#div1").fadeIn()
+        $("#div1").fadeToggle()
+    });
+    $("#btn2").click(function(){
+        $("#div1").fadeOut()
+    });
+    $("#btn3").click(function(){
+        //$("#div1").show()
+        $("#div1").toggle()
+    });
+    $("#btn4").click(function(){
+        $("#div1").hide()
+    });
+    $("#btn5").click(function(){
+        //$("#div1").slideDown()
+        $("#div1").slideToggle()
+    });
+    $("#btn6").click(function(){
+        $("#div1").slideUp()
+    });
+    $("#btn7").click(function(){
+        //$("#div1").show("fast")
+        $("#div1").show(3000,function(){
+           alert('广告加载完毕')
+        });
+    });
+})
