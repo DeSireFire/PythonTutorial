@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08_节点操作.html</title>
+	<script type="text/javascript" src="./js/jquery-1.12.4.min.js"></script>
+	<style type="text/css">
+		#div1{
+			border: solid 1px red;
+		}
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			//jquery对象
+			var $span = $('<span>span元素</span>');
+			var $p = $('<p>p元素</p>');
+			var $h = $('<h1>h1元素</h1>');
+			$('#div1').append($span);
+			$('#div1').append($p);
+		    $h.appendTo('#div1');
+			/*prepend()和prprepend()*/
+
+		    $('#div1').before($h);
+		    /*$h.insertBefore('#div1');*/
+			$p.remove();
+			/*after()和insertAfter()*/
+
+
+
+
+
+
+		})
+	</script>
+</head>
+<body>
+
+	<div id="div1"></div>
+</body>
+</html>

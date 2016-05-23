@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01_鼠标移入移出.html</title>
+	<script type="text/javascript" src="./js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+
+			/*$('#div1').mouseenter(function(){
+				$(this).stop().animate({marginTop:50});
+				//$(this).animate({marginTop:50});
+			});
+
+			$('#div1').mouseleave(function(){
+				$(this).stop().animate({marginTop:100});
+				//$(this).animate({marginTop:100});
+			});*/
+
+			/* 通过hover简写	*/
+			$('#div1').hover(function(){
+				$(this).stop().animate({marginTop:50});
+			},function(){
+				$(this).stop().animate({marginTop:100});
+			});
+
+
+		})
+
+	</script>
+	<style type="text/css">
+		.box{
+			width:200px;
+			height:200px;
+			background-color:gold;
+			margin:100px auto 0px;
+		}
+
+		.son{
+			width:100px;
+			height:100px;
+			background-color:green;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="div1" class="box">
+		<div class="son"></div>
+	</div>
+</body>
+</html>

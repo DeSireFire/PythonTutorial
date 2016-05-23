@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			/*$('#btn1').bind('click mouseover',function(){
+				alert('hello!');
+
+				$(this).unbind('mouseover');
+			})*/
+			/*$('#div2 input').bind('click',function(){
+				alert('哈哈');
+			})*/
+			/*$('#div2 input').click(function(){
+				alert('哈哈');
+			})*/
+			$('#div2 input').on('click',function(){
+				alert('哈哈');
+			});
+			$('#div2').delegate('input','click',function(){
+				alert('哈哈');
+			});
+
+			$('#btn_add').click(function(){
+				$('<input type="button" value="按钮2" />').appendTo('#div2')
+			});
+
+		})
+
+
+
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<input type="button"  value="增加一个按钮" id="btn_add"/>
+	</div>
+	<hr/>
+	<div id="div2">
+		<input type="button" value="按钮1" />
+	</div>
+</body>
+</html>

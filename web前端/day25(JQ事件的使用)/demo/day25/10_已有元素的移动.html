@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10_已有元素的移动.html</title>
+	<script type="text/javascript" src="./js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+
+			// 已有元素的操作类似于剪切
+			/*$('.p1').insertBefore('.div1');*/
+
+
+			$h = $('<h3>h3标题</h3>');
+
+			//新创建的元素直接插入
+			$h.insertBefore('.p1');
+
+
+		});
+
+	</script>
+</head>
+<body>
+	<div class="div1">这是一个div元素</div>
+	<p class="p1">这是一个p元素</p>
+</body>
+</html>

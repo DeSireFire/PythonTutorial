@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+
+			// html 操作比节点操作的性能高，建议能用html的地方就用html方法
+			//$('#div1').html('<a href="#">链接</a>');
+
+			$('#div1').append('<a href="#">链接</a>');
+
+		})
+
+
+	</script>
+</head>
+<body>
+	<div id="div1">
+		层
+	</div>
+</body>
+</html>
