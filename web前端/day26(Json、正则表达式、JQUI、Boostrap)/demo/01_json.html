@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01_json.html</title>
+	<script type="text/javascript">
+		var ret = {
+			"employees": [
+				{ "firstName":"Bill" , "lastName":"Gates" },
+				{ "firstName":"George" , "lastName":"Bush" },
+				{ "firstName":"Thomas" , "lastName":"Carter" }
+			]
+		};
+		//alert(ret.employees[0].firstName)
+		console.log(ret)
+
+
+		var ret = '{"employees":[{ "firstName":"Bill" , "lastName":"Gates" },{ "firstName":"George" , "lastName":"Bush" },{ "firstName":"Thomas" , "lastName":"Carter" }]}'
+		console.log(ret);
+		ret = eval("("+ret+")");
+		console.log(ret);
+		alert(ret.employees[0].firstName)
+		/*原因在于：eval本身的问题。
+		 由于json是以”{}”的方式来开始以及结束的，在JS中，它会被当成一个语句块来处理，所以必须强制性的将它转换成一种表达式。*/
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

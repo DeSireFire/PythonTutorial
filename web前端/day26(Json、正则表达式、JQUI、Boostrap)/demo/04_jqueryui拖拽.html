@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04_jqueryui.html</title>
+	<script type="text/javascript" src="./js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.box').draggable({
+				// 约束元素在父级内拖动
+				containment:'parent',
+				//限制在x轴向拖动
+				axis:'x',
+				//拖动是透明度变为0.6
+				opacity:0.6,
+				drag:function(ev,ui){
+					//console.log('ev='+ev);
+					console.log(ui.position);
+				}
+			});
+		})
+	</script>
+	<style type="text/css">
+		.con{
+			width:300px;
+			height:300px;
+			border:1px solid #000;
+			margin:50px auto 0;
+		}
+		.box{
+			width:40px;
+			height:40px;
+			background-color:gold;
+			cursor:pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="con">
+		<div class="box"></div>
+	</div>
+</body>
+</html>

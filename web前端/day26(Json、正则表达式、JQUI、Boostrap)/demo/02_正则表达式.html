@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02_正则表达式.html</title>
+	<script type="text/javascript">
+		
+		//定义一个正则的规则：
+
+		// 第一种定义方法：
+		var re = new RegExp('abc','ig');
+		//var re = new RegExp('abc');
+
+		// 第二种定义方法：
+		var re2 = /abc/ig;
+		//var re2 = /abc/;
+
+
+		var str = 'abc';
+
+
+		//alert(re2.test(str)); //弹出false
+
+		// ^匹配开头 $匹配结尾
+		var re3 = /^\d+/;
+		var str3 = '123abc';
+		//alert(re3.test(str3));  //false
+		//alert(re3.test('a123456'));  //false
+
+		var re4 = /^\w+$/;
+		var str4 = 'as&d';
+		//alert(re4.test(str4)); //false
+		//alert(re4.test('a23_3fd')); //true
+
+		var str5 = '123adfcd678jasdfjk988lkjkasd345';
+		var re51 = /\d+/g;
+		var re52 = /\d+/;
+
+		var arr1 = str5.match(re51);
+		var arr2 = str5.match(re52);
+
+		console.log(arr1);
+		console.log(arr2);
+		/*Array [ "123", "678", "988", "345" ]
+		Array [ "123" ]*/
+
+
+		var re6 = /x/;
+
+		alert(str5.search(re6));
+
+
+		var str6 = str5.replace(re52,'*');
+
+		alert(str6);
+
+		var str="How are    you doing today?"
+
+		alert(str.split(/\s+/))
+
+
+		name1 = '老王的秘密'
+		var reg1 = /^[\u4e00-\u9fa5]+$/
+		alert(reg1.test(name1))
+
+	/*	reg1.compile("abc","g")
+		console.log(reg1)
+		alert(reg1.test(name1))*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
