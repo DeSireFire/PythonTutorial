@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>top</title>
+</head>
+<style type="text/css">
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	.container{
+		width: 800px;
+		height: 5000px;
+		background-color: pink;
+		margin: auto;
+		position: relative;
+
+	}
+	#tt{
+		position: fixed;
+		width: 50px;
+		height: 50px;
+		font-size: 18px;
+		background-color: green;
+		top: 900px;
+		left: 1800px;
+		display: none;
+		cursor: pointer;
+		border: none;
+	}
+</style>
+<body>
+	<div class="container"></div>
+	<button id="tt">Top</button>
+</body>
+<script type="text/javascript">
+	var t = document.getElementById("tt");
+	window.onscroll = function () {
+		// body...
+		var ss = document.documentElement.scrollTop || document.body.scrollTop;
+		if (ss>200) {
+			t.style.display="block";
+		}else if(ss<=200){
+			t.style.display="none";
+		}
+		t.onclick = function(){
+			document.body.scrollTop = 0;
+		}
+	}
+
+
+</script>
+</html>
