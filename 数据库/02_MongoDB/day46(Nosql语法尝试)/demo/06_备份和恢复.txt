@@ -1,0 +1,8 @@
+**************************±¸·Ý**************************
+
+mongodump -h 127.0.0.1 --port 10001 -d laowang -o ~/mongodb.bak
+
+
+**************************»Ö¸´**************************
+
+mongorestore -h 127.0.0.1 --port 10001 -d laowang2 --dir ~/mongodb.bak/laowang/
