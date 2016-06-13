@@ -1,0 +1,10 @@
+sudo /usr/local/mongodb/bin/mongod --dbpath ~/桌面/workspace/node1/db/ --logpath ~/桌面/workspace/node1/log/mongodb.log --port 10001 --fork --logappend --replSet laowang
+
+
+sudo /usr/local/mongodb/bin/mongod --dbpath ~/桌面/workspace/node2/db/ --logpath ~/桌面/workspace/node2/log/mongodb.log --port 10002 --fork --logappend --replSet laowang
+
+
+sudo /usr/local/mongodb/bin/mongod --dbpath ~/桌面/workspace/node3/db/ --logpath ~/桌面/workspace/node3/log/mongodb.log --port 10003 --fork --logappend --replSet laowang
+
+
+db.runCommand({"replSetInitiate":{"_id":"laowang","members":[{"_id":1,"host":"localhost:10001","priority":1},{"_id":2,"host":"localhost:10002","priority":2},{"_id":3,"host":"localhost:10003","priority":3}]}});
