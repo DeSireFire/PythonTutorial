@@ -1,0 +1,42 @@
+1、建立环境文件夹 
+
+yong@yong-virtual-machine:~/桌面/workspace/redis$ tree
+
+port 6001   master
+port 6002   slave
+port 6003   slave
+
+.
+├── node1
+│?? ├── config
+│?? │?? └── redis.conf
+│?? ├── db
+│?? └── log
+│??     └── redis.log
+├── node2
+│?? ├── config
+│?? │?? └── redis.conf
+│?? ├── db
+│?? └── log
+│??     └── redis.log
+└── node3
+    ├── config
+    │?? └── redis.conf
+    ├── db
+    └── log
+        └── redis.log
+
+
+2、修改redis.conf端口号（数据库的位置，日志的位置）
+
+port 6001
+dir /home/yong/桌面/workspace/redis/node1/db/
+logfile /home/yong/桌面/workspace/redis/node1/log/redis.log
+
+3、启动
+sudo redis-server ~/桌面/workspace/redis/node1/config/redis.conf
+sudo redis-server ~/桌面/workspace/redis/node2/config/redis.conf
+sudo redis-server ~/桌面/workspace/redis/node3/config/redis.conf
+
+4、测试
+
