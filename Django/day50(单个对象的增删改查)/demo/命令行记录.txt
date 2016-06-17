@@ -1,0 +1,201 @@
+rq@RaXian:~/webapp$ ls
+booktest  manage.py  webapp
+rq@RaXian:~/webapp$ python manage.py makemigrations
+Migrations for 'booktest':
+  0001_initial.py:
+    - Create model BookInfo
+rq@RaXian:~/webapp$ python manage.py migrate
+Operations to perform:
+  Synchronize unmigrated apps: messages, staticfiles
+  Apply all migrations: auth, sessions, contenttypes, booktest, admin
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+  Installing custom SQL...
+Running migrations:
+  Rendering model states... DONE
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying booktest.0001_initial... OK
+  Applying sessions.0001_initial... OK
+rq@RaXian:~/webapp$ python manage.py migrate
+Operations to perform:
+  Synchronize unmigrated apps: messages, staticfiles
+  Apply all migrations: contenttypes, admin, sessions, auth
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+  Installing custom SQL...
+Running migrations:
+  No migrations to apply.
+  Your models have changes that are not yet reflected in a migration, and so won't be applied.
+  Run 'manage.py makemigrations' to make new migrations, and then re-run 'manage.py migrate' to apply them.
+rq@RaXian:~/webapp$ python manage.py makemigrations
+Migrations for 'booktest':
+rq@RaXian:~/webapp$ ls
+booktest  db.sqlite3  manage.py  webapp
+rq@RaXian:~/webapp$ python manage.py shell
+
+Type 'copyright', 'credits' or 'license' for more information
+IPython 6.2.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: from booktest.models import *
+
+In [2]: BookInfo
+Out[2]: booktest.models.BookInfo
+
+In [3]: b = BookInfo()
+
+In [4]: b.btitle = '射雕英雄传'
+
+In [5]: from datetime import *
+
+In [6]: b.bpubdate = date(1998-01-10)
+  File "<ipython-input-6-9c40ec7a539c>", line 1
+    b.bpubdate = date(1998-01-10)
+                            ^
+SyntaxError: invalid token
+
+
+In [7]: b.bpubdate = date(1998,1,10)
+
+In [8]: b.save()
+
+In [9]: BookInfo.objects.all()
+Out[9]: [<BookInfo: BookInfo object>]
+
+In [10]: bs = BookInfo.objects.all()
+
+In [11]: bs[0]
+Out[11]: <BookInfo: BookInfo object>
+
+In [12]: bs[0].id
+Out[12]: 1
+
+In [13]: bs[0].btitle
+Out[13]: '射雕英雄传'
+
+In [14]: bs[0].bpubdate
+Out[14]: datetime.date(1998, 1, 10)
+
+In [15]: b = BookInfo()
+
+In [16]: b.btitle = '天龙八部'
+
+In [17]: b.bpubdate = date(1997,1,10)
+
+In [18]: b.save()
+
+In [19]: BookInfo.objects.all()
+Out[19]: [<BookInfo: BookInfo object>, <BookInfo: BookInfo object>]
+
+In [20]: bs = BookInfo.objects.all()
+
+In [21]: for b in bs:
+    ...:     print(b.id,b.btitle,b.bpubdate
+    ...:     )
+    ...:     
+1 射雕英雄传 1998-01-10
+2 天龙八部 1997-01-10
+
+In [22]: b = BookInfo.objects.get(pk=1)
+
+In [23]: b.id
+Out[23]: 1
+
+In [24]: b.btitle
+Out[24]: '射雕英雄传'
+
+In [25]: b = BookInfo.objects.get(btitle='射雕英雄传')
+
+In [26]: b.i
+---------------------------------------------------------------------------
+
+In [27]: b.id
+Out[27]: 1
+
+In [28]: b.bpubdate
+Out[28]: datetime.date(1998, 1, 10)
+
+In [29]: b = BookInfo.objects.get(pk=100)
+---------------------------------------------------------------------------
+
+In [30]: b = BookInfo.objects.get(pk=1)
+
+In [31]: b.btitle
+Out[31]: '射雕英雄传'
+
+In [32]: b.btitle = '变形金刚'
+
+In [33]: b.save()
+
+In [34]: b = BookInfo.objects.get(pk=1)
+
+In [35]: b.btitle
+Out[35]: '变形金刚'
+
+In [36]: b = BookInfo.objects.get(pk=1)
+
+In [37]: b.delete()
+
+In [38]: b = BookInfo.objects.get(pk=1)
+---------------------------------------------------------------------------
+
+from booktest.models import *
+BookInfo
+b = BookInfo()
+b.btitle = '射雕英雄传'
+from datetime import *
+b.bpubdate = date(1998-01-10)
+b.bpubdate = date(1998,1,10)
+b.save()
+BookInfo.objects.all()
+bs = BookInfo.objects.all()
+bs[0]
+bs[0].id
+bs[0].btitle
+bs[0].bpubdate
+b = BookInfo()
+b.btitle = '天龙八部'
+b.bpubdate = date(1997,1,10)
+b.save()
+BookInfo.objects.all()
+bs = BookInfo.objects.all()
+for b in bs:
+    print(b.id,b.btitle,b.bpubdate
+    )
+b = BookInfo.objects.get(pk=1)
+b.id
+b.btitle
+b = BookInfo.objects.get(btitle='射雕英雄传')
+b.i
+b.id
+b.bpubdate
+b = BookInfo.objects.get(pk=100)
+b = BookInfo.objects.get(pk=1)
+b.btitle
+b.btitle = '变形金刚'
+b.save()
+b = BookInfo.objects.get(pk=1)
+b.btitle
+b = BookInfo.objects.get(pk=1)
+b.delete()
+b = BookInfo.objects.get(pk=1)
+%history
+
+In [40]: %history > 01.txt
+
+In [41]: cp 01.txt ~/
+cp: 无法获取'01.txt' 的文件状态(stat): 没有那个文件或目录
+
+In [42]: ls
+booktest/  db.sqlite3  manage.py*  webapp/
+
+In [43]:
