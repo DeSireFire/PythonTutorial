@@ -1,0 +1,72 @@
+import os,django
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "project_name.settings")# project_name ÏîÄ¿Ãû³Æ
+django.setup()
+
+
+import sys; print('Python %s on %s' % (sys.version, sys.platform))
+sys.path.extend(['/home/rq/webapp'])
+django.core.exceptions.ImproperlyConfigured: Requested setting DEFAULT_INDEX_TABLESPACE, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings.
+In[3]: exit
+To exit the PyDev Console, terminate the console within IDE.
+In[4]: from booktest.models import *
+django.core.exceptions.ImproperlyConfigured: Requested setting DEFAULT_INDEX_TABLESPACE, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings.
+In[5]: import os,django
+  ...: os.environ.setdefault("DJANGO_SETTINGS_MODULE", "webapp.settings")# project_name ÏîÄ¿Ãû³Æ
+  ...: django.setup()
+In[8]: from booktest.models import *
+In[9]: b = BookInfo()
+In[10]: b.btitle="ÉäµñÓ¢ÐÛ´«"
+In[11]: from datetime import *
+In[12]: b.bpubdate = date.today()
+In[13]: b.save()
+In[14]: b.btitle="ºùÂ«ÍÞ"
+In[15]: b.id
+Out[15]: 1
+In[16]: b = BookInfo()
+In[17]: b.btitle="ºùÂ«ÍÞ"
+   ...: 
+In[18]: b.bpubdate=date(1990,10,10)
+In[19]: b.save()
+In[20]: BookInfo.objects.all()
+Out[20]: [<BookInfo: BookInfo object>, <BookInfo: BookInfo object>]
+In[21]: h = HeroInfo()
+In[22]: h1 = HeroInfo()
+In[23]: h1.hname='¹ù¾¸'
+In[24]: h1.hgender = 1
+In[25]: h1.hcontent='xxxx'
+In[26]: b = BookInfo.objects.get(pk=1)
+In[27]: h1.hbookinfo = b
+In[28]: h1.save()
+In[29]: h2= HeroInfo()
+   ...: 
+In[30]: h2.hname='»ÆÈØ'
+In[31]: h1.hgender = 0
+In[32]: h2.hgender = 0
+In[33]: h2.hbookinfo = b
+In[34]: h2.save()
+In[35]: HeroInfo.objects.get(pk=1)
+Out[35]: <HeroInfo: HeroInfo object>
+In[36]: h1 = HeroInfo.objects.get(pk=1)
+In[37]: h1.hname
+Out[37]: '¹ù¾¸'
+In[38]: h1.hbookinfo.btitle
+Out[38]: 'ÉäµñÓ¢ÐÛ´«'
+In[39]: h1.hbookinfo_id
+Out[39]: 1
+In[40]: h1.hbookinfo.id
+Out[40]: 1
+In[41]: BookInfo.objects.get(pk=h1.hbookinfo_id)
+Out[41]: <BookInfo: BookInfo object>
+In[42]: h1.hbookinfo
+Out[42]: <BookInfo: BookInfo object>
+In[43]: book = BookInfo.objects.get(pk=1)
+In[44]: book.btitle
+Out[44]: 'ÉäµñÓ¢ÐÛ´«'
+In[45]: book.heroinfo_set.all()
+Out[45]: [<HeroInfo: HeroInfo object>, <HeroInfo: HeroInfo object>]
+In[46]: hs = book.heroinfo_set.all()
+In[49]: for i in hs:
+   ...:     print(i.hname)
+   ...:     
+¹ù¾¸
+»ÆÈØ
