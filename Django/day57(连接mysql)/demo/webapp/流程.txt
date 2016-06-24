@@ -1,0 +1,22 @@
+1、在project 的setting中配置mysqldb
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'laowang',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+    }
+}
+
+2、pip安装pymysql
+    如果是2.X 安装mysqldb
+
+3、在project的__init__.py中加入代码
+
+import pymysql
+pymysql.install_as_MySQLdb()
+
+4、迁移测试
