@@ -1,0 +1,22 @@
+1、objects是一个Manager对象，如果自己没有指定，使用父类的objects.
+如果自己指定，使用自己的
+
+
+
+In [2]: from booktest.models import *
+
+In [3]: BookInfo.bookinfo_manager1.all()
+Out[3]: [<BookInfo: 射雕英雄传>, <BookInfo: 天龙八部>, <BookInfo: 笑傲江湖>, <BookInfo: 雪山飞狐>]
+
+In [4]: BookInfo.bookinfo_manager2.all()
+Out[4]: [<BookInfo: 射雕英雄传>, <BookInfo: 天龙八部>, <BookInfo: 雪山飞狐>]
+
+In [5]: %history
+clear
+from booktest.models import *
+BookInfo.bookinfo_manager1.all()
+BookInfo.bookinfo_manager2.all()
+%history
+
+In [6]:
+

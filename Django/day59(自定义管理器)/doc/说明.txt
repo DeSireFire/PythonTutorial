@@ -1,0 +1,24 @@
+1、默认的表名   appname_classname
+
+
+
+In [2]: from booktest.models import *
+
+In [3]: BookInfo.objects.all()
+Out[3]: [<BookInfo: a>, <BookInfo: b>]
+
+In [4]: BookInfo.objects.all()
+Out[4]: [<BookInfo: a>, <BookInfo: b>]
+
+In [5]: exit
+(1707_3) yong@yong-virtual-machine:~/webapp$ python manage.py shell
+Python 3.5.2 (default, Nov 17 2016, 17:05:23)
+Type 'copyright', 'credits' or 'license' for more information
+IPython 6.2.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: from booktest.models import *
+
+In [2]: BookInfo.objects.all()
+Out[2]: [<BookInfo: b>, <BookInfo: a>]
+
+In [3]:
