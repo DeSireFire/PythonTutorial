@@ -1,23 +1,9 @@
 from django.db import models
-from django.db.models.manager import Manager
-from datetime import *
 
 
-"""
-自定义管理器
-"""
-class BookInfo_Manager(Manager):
-    def get_queryset(self):
-        return super().get_queryset().filter(isdelete=0)
 
-    def create(self,btitle='xx',bpubdate=date.today(),bread=0,bcomment=0,isdelete=0):
-        b = BookInfo()
-        b.btitle = btitle
-        b.bpubdate = bpubdate
-        b.bread = bread
-        b.bcomment = bcomment
-        b.isdelete = isdelete
-        return b
+
+
 
 class BookInfo(models.Model):
     btitle = models.CharField(max_length=100)
@@ -26,26 +12,9 @@ class BookInfo(models.Model):
     bcomment = models.IntegerField()
     isdelete = models.BooleanField()
 
-    bookinfo_manager1 = Manager()
-    bookinfo_manager2 = BookInfo_Manager()
-
-
     def __str__(self):
         return self.btitle
 
-    """
-    @classmethod
-    def create(cls,btitle='xx',bpubdate=date.today(),bread=0,bcomment=0,isdelete=0):
-        b = BookInfo()
-
-        b.btitle = btitle
-        b.bpubdate = bpubdate
-        b.bread = bread
-        b.bcomment = bcomment
-        b.isdelete = isdelete
-
-        return b
-    """
 
 
 
@@ -60,7 +29,22 @@ class HeroInfo(models.Model):
 
 
 
+class Dept(models.Model):
+    deptno = models.IntegerField(db_column='DEPTNO', primary_key=True)
+    dname = models.CharField(db_column='DNAME', max_length=14, blank=True, null=True)
+    loc = models.CharField(db_column='LOC', max_length=13, blank=True, null=True)
 
+
+
+class Emp(models.Model):
+    empno = models.IntegerField(db_column='EMPNO', primary_key=True)
+    ename = models.CharField(db_column='ENAME', max_length=14, blank=True, null=True)
+    job = models.CharField(db_column='JOB', max_length=9, blank=True, null=True)
+    mgr = models.ForeignKey('self',db_column='mgr', blank=True, null=True)
+    hiredate = models.DateField(db_column='HIREDATE', blank=True, null=True)
+    sal = models.DecimalField(db_column='SAL', max_digits=7, decimal_places=2, blank=True, null=True)
+    comm = models.DecimalField(db_column='COMM', max_digits=7, decimal_places=2, blank=True, null=True)
+    deptno = models.ForeignKey(Dept, db_column='DEPTNO', blank=True, null=True)
 
 
 

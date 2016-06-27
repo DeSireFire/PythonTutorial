@@ -48,3 +48,62 @@ insert into booktest_heroinfo(hname,hgender,hbookinfo_id,hcontent,isDelete) valu
 ('袁紫衣',0,4,'六合拳',0);
 
 select * from booktest_heroinfo;
+select * from booktest_bookinfo;
+
+
+
+
+
+
+
+/********************************部门表dept********************************/
+/*创建表*/
+DROP TABLE  IF EXISTS booktest_dept;  
+CREATE TABLE booktest_dept(
+	DEPTNO INT PRIMARY KEY,  
+	DNAME VARCHAR(14) ,  
+	LOC VARCHAR(13) 
+);
+/*插入数据*/
+INSERT INTO booktest_dept VALUES  
+(10,'ACCOUNTING','NEW YORK'),  
+(20,'RESEARCH','DALLAS'), 
+(30,'SALES','CHICAGO'),
+(40,'OPERATIONS','BOSTON');  
+/*查询数据*/
+SELECT * FROM booktest_dept;
+
+
+/********************************员工表emp********************************/
+/*创建表*/
+DROP TABLE  IF EXISTS booktest_emp;  
+CREATE TABLE booktest_emp(
+	EMPNO INT PRIMARY KEY,  
+	ENAME VARCHAR(14) ,  
+	JOB VARCHAR(9),  
+  MGR INT,  
+  HIREDATE DATE,  
+  SAL DECIMAL(7,2),  
+  COMM DECIMAL(7,2),  
+  DEPTNO int,
+  FOREIGN KEY(DEPTNO) REFERENCES booktest_dept(DEPTNO)
+);
+
+/*插入数据*/
+INSERT INTO booktest_emp VALUES  
+(7369,'SMITH','CLERK',7902,'1980-12-17',800,NULL,20),
+(7499,'ALLEN','SALESMAN',7698,'1981-2-20',1600,300,30), 
+(7521,'WARD','SALESMAN',7698,'1981-2-22',1250,500,30),
+(7566,'JONES','MANAGER',7839,'1981-4-2',2975,NULL,20),
+(7654,'MARTIN','SALESMAN',7698,'1981-9-28',1250,1400,30),
+(7698,'BLAKE','MANAGER',7839,'1981-5-1',2850,NULL,30),
+(7782,'CLARK','MANAGER',7839,'1981-6-9',2450,NULL,10),
+(7788,'SCOTT','ANALYST',7566,'1987-7-13',3000,NULL,20),
+(7839,'KING','PRESIDENT',NULL,'1981-11-17',5000,NULL,10),
+(7844,'TURNER','SALESMAN',7698,'1981-9-8',1500,0,30),
+(7876,'ADAMS','CLERK',7788,'1987-7-13',1100,NULL,20),
+(7900,'JAMES','CLERK',7698,'1981-12-3',950,NULL,30),
+(7902,'FORD','ANALYST',7566,'1981-12-3',3000,NULL,20),
+(7934,'MILLER','CLERK',7782,'1982-1-23',1300,NULL,10);
+
+select * from booktest_emp;
