@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>books.html</title>
+</head>
+<body>
+    <ul>
+        <li>books.....</li>
+    </ul>
+<hr/>
+{{bookinfo_list}}
+<hr/>
+<ul>
+    {%for book in bookinfo_list%}
+    <!--路径传参
+        http://127.0.0.1:8000/books/1
+
+        request传参
+        http://127.0.0.1:8000/books？id=1&name=a
+    -->
+    <li><a href="{%url 'books:bookdetail' book.id 12 %}">{{book.btitle}}</a></li>
+    {%endfor%}
+</ul>
+</body>
+</html>
+
