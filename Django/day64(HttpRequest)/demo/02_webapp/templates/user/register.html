@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bookregister.html</title>
+</head>
+<body>
+    <form method="get" action="/user/register_handler">
+        <table>
+            <tr>
+                <td>名字</td>
+                <td><input name="username"/></td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td><input name="userpwd"/></td>
+            </tr>
+            <tr>
+                <td>爱好</td>
+                <td>
+                    <input name="hobby" type="checkbox" value="1"/><label>抽烟</label>
+                    <input name="hobby" type="checkbox" value="2"/><label>喝酒</label>
+                    <input name="hobby" type="checkbox" value="3"/><label>汤头发</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="注册"/></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
