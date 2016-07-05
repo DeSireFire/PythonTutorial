@@ -121,3 +121,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+#redis 缓存session
+SESSION_ENGINE = 'redis_sessions.session'
+SESSION_REDIS_HOST = '192.168.14.93'
+SESSION_REDIS_PORT = 6379
+SESSION_REDIS_DB = 0
+SESSION_REDIS_PASSWORD = ''
+SESSION_REDIS_PREFIX = 'session'
