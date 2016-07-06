@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bookdetail.html</title>
+</head>
+<body>
+    <h1>当前书详细信息</h1>
+    <table width="400" border="1">
+        <tr>
+            <td>标题</td>
+            <td>{{bookinfo.btitle}}</td>
+        </tr>
+        <tr>
+            <td>时间</td>
+            <td>{{bookinfo.bpubdate}}</td>
+        </tr>
+        <tr>
+            <td>是否删除</td>
+            <td>{{bookinfo.isdelete2}}</td>
+        </tr>
+    </table>
+    <h1>当前书里英雄的详细信息</h1>
+    <table width="400" border="1">
+        <thead>
+            <tr>
+                <th>名字</th>
+                <th>性别</th>
+                <th>内容</th>
+            </tr>
+        </thead>
+        <tbody>
+        {%for h in heroinfos%}
+             <tr>
+                <td>{{h.hname}}</td>
+                <td>{%if h.hgender %}男{%else %}女{%endif %}</td>
+                 {% comment%}
+                <td>{{h.hgender2}}</td>
+                 {% endcomment%}
+                <td>{{h.hcontent}}</td>
+             </tr>
+        {%endfor%}
+        </tbody>
+    </table>
+</body>
+</html>
