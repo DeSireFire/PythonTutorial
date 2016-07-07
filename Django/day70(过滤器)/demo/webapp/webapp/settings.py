@@ -90,7 +90,7 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'laowang',
+        'NAME': 'desirefire',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': '127.0.0.1',
