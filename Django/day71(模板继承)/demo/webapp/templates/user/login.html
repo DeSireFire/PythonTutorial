@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login.html</title>
+</head>
+<body>
+    <h1>{{msg}}</h1>
+    <form method="POST" action="/user/login_handler">
+        <table>
+            <tr>
+                <td>名字</td>
+                <td><input name="username" value="{{username}}"/></td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td><input name="userpwd"/></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="checkbox" name="rememberName" value="1"/>记住用户名</td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="登录"/></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
