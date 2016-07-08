@@ -11,4 +11,6 @@ urlpatterns=[
     url(r'^test2$',test2),
     url(r'^test3/(\d+)/(\d+)$',test3,name='test3'),
     url(r'^test4$',test4),
+    url(r'^e_index$',e_index),
+    url(r'^e_user_content_add$',e_user_content_add)
 ]

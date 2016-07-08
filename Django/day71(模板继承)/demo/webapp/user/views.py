@@ -89,3 +89,10 @@ def test3(request,a,b):
 def test4(request):
     context = {'k1':'abc','num':21}
     return render(request, 'user/test4.html', context)
+
+
+def e_index(request):
+    return render(request, 'user/index.html')
+
+def e_user_content_add(request):
+    return render(request, 'user/user_content_add.html')
