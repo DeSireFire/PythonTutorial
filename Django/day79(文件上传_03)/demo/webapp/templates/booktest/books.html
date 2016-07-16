@@ -13,15 +13,28 @@
 <hr/>
 <ul>
     {%for book in bookinfo_list%}
-    <!--路径传参
-        http://127.0.0.1:8000/books/1
-
-        request传参
-        http://127.0.0.1:8000/books？id=1&name=a
-    -->
     <li><a href="{%url 'books:bookdetail' book.id%}">{{book.btitle}}</a></li>
     {%endfor%}
 </ul>
+<div>
+    {%for pagenum in page_range%}
+        {%ifnotequal pagenum pagenow %}
+            <span><a href="/booktest/books?pagenow={{pagenum}}">{{pagenum}}</a></span>
+        {%else%}
+            <span>{{pagenum}}</span>
+        {%endifnotequal%}
+    {%endfor%}
+</div>
+
 </body>
 </html>
 
+
+
+
+
+
+
+
+
+<!--http://blog.csdn.net/goupper1991/article/details/50768346-->

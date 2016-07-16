@@ -156,12 +156,9 @@ def test2(request):
     else:
         pass
 
-
-
     return render(request, 'user/success.html')
 
 
 #处理文件的名字
 def doFileName(fileName):
     return str(uuid.uuid1())+os.path.splitext(fileName)[1]
-

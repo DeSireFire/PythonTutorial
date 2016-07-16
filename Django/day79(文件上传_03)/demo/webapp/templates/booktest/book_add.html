@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>book_add.html</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data" action="/booktest/add_handler">
+        {%csrf_token%}
+        <table>
+            <tr>
+                <td>书名</td>
+                <td><input  name="btitle"/></td>
+            </tr>
+            <tr>
+                <td>出版日期</td>
+                <td><input  name="bpubdate" value="2017-9-28"/></td>
+            </tr>
+            <tr>
+                <td>点击量</td>
+                <td><input  name="bread" value="1"/></td>
+            </tr>
+            <tr>
+                <td>评论数</td>
+                <td><input  name="bcomment" value="1"/></td>
+            </tr>
+            <tr>
+                 <td>封面</td>
+                <td><input type="file" name="bimage"/></td>
+            </tr>
+             <tr>
+                 <td>是否删除</td>
+                <td><input type="checkbox" name="isdelete" value="1"/></td>
+            </tr>
+            <tr>
+                <td><input type="submit"/></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+

@@ -3,6 +3,8 @@ from booktest.views import *
 
 
 urlpatterns=[
-    url(r'^$',books),
-    url(r'^(?P<id>\d+)$',bookdetail,name='bookdetail')
+    url(r'^books$',books,name='books'),
+    url(r'^(?P<id>\d+)$',bookdetail,name='bookdetail'),
+    url(r'^add$',add,name='add'),
+    url(r'^add_handler$',add_handler,name='add_handler')
 ]
