@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>books.html</title>
+</head>
+<body>
+    <ul>
+        <li>books.....</li>
+    </ul>
+<hr/>
+{{bookinfo_list}}
+<hr/>
+<ul>
+    {%for book in bookinfo_list%}
+    <li><a href="{%url 'books:bookdetail' book.id%}">{{book.btitle}}</a></li>
+    {%endfor%}
+</ul>
+<div>
+    {%for pagenum in page_range%}
+        {%ifnotequal pagenum pagenow %}
+            <span><a href="/booktest/books?pagenow={{pagenum}}">{{pagenum}}</a></span>
+        {%else%}
+            <span>{{pagenum}}</span>
+        {%endifnotequal%}
+    {%endfor%}
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!--http://blog.csdn.net/goupper1991/article/details/50768346-->

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login.html</title>
+    <script type="text/javascript">
+        url = '/user/verification'
+        function changeImage(obj){
+            obj.src =  url+'?num='+new Date()
+        }
+    </script>
+</head>
+<body>
+    <h1>{{msg}}</h1>
+    <form method="POST" action="/user/login_handler">
+        {%comment%}
+            {%csrf_token%}
+        {%endcomment%}
+        <table>
+            <tr>
+                <td>名字</td>
+                <td colspan="3"><input name="username" value="{{username}}"/></td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td colspan="3"><input name="userpwd"/></td>
+            </tr>
+            <tr>
+                <td>验证码</td>
+                <td><input name="userverification"/></td>
+                <td><img src="/user/verification" alt="验证码" style="cursor: pointer" onclick="changeImage(this)"/></td>
+                <td>{{userverification_error}}</td>
+            </tr>
+            <tr>
+                <td colspan="4"><input type="checkbox" name="rememberName" value="1"/>记住用户名</td>
+            </tr>
+            <tr>
+                <td colspan="4"><input type="submit" value="登录"/></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
