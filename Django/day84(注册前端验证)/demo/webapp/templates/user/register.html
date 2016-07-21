@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bookregister.html</title>
+    <script type="text/javascript">
+
+        //全局变量
+        var xmlhttp;
+
+        function myajax(url,func,method='GET',params=null) {
+            //获取XMLHttpRequest对象
+
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest()
+            } else {
+                xmlhttp = new ActiveXObject()
+            }
+            //onreadystatechange 事件
+            xmlhttp.onreadystatechange = func;
+            //open
+            xmlhttp.open(method, url, true);
+            //send
+            xmlhttp.send(params);
+        };
+
+        //window加载完毕事件
+        window.onload = function(){
+            var username = document.getElementById('username')
+            //blur失去光标事件
+            username.onblur = function(){
+                value = this.value
+                myajax('/user/check_username?username='+value,function(){
+                    if(xmlhttp.readyState==4 && xmlhttp.status==200){
+                        ret = xmlhttp.responseText
+                        if(ret=='1'){
+                            document.getElementById('username_erro').innerHTML = '×'
+                        }else{
+                            document.getElementById('username_erro').innerHTML = '√'
+                        }
+                    }
+                })
+            }
+        }
+    </script>
+</head>
+<body>
+    <form method="post" action="/user/register_handler">
+        {%csrf_token%}
+        <table>
+            <tr>
+                <td>名字</td>
+                <td><input name="username" id="username"/></td>
+                <td>{{msg}}<span id="username_erro"></span></td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td><input name="userpwd"/></td>
+                <td>{{msg}}</td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="submit" value="注册"/></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
