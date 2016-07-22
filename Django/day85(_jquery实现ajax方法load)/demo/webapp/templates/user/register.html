@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bookregister.html</title>
+    <script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="/static/js/public.js"></script>
+    <script type="text/javascript">
+        //全局变量
+        var xmlhttp;
+
+
+        //window加载完毕事件
+        window.onload = function(){
+
+            var username = document.getElementById('username')
+            var userpwd = document.getElementById('userpwd')
+            var username_error = document.getElementById('username_error')
+            var userpwd_error = document.getElementById('userpwd_error')
+            var myform = document.getElementById('myform')
+
+            //事件
+            username.onblur = check_username
+            userpwd.onblur = check_userpwd
+            myform.onsubmit = check_myform
+        }
+
+
+        //验证用户名非空,长度是6-10,只能包含字母数字下划线,true验证通过,false验证失败
+        function check_username(){
+            pattern = /^[a-zA-Z_0-9]+$/
+            var flag = true;
+            var value = username.value.trim()
+            if(value.length==0){
+                username_error.innerHTML = '必填,不能为空'
+                return false;
+            }else if(value.length<6 || value.length>10){
+                username_error.innerHTML = '长度必须是在6-10之间'
+                return false;
+            }else if(!pattern.test(value)){
+                username_error.innerHTML = '只能包含字母数字下划线'
+                return false;
+            }else{
+                /*myajax('/user/check_username?username='+value,function(){
+                    if(xmlhttp.readyState==4 && xmlhttp.status==200){
+                        ret = xmlhttp.responseText
+                        if(ret=='1'){
+                            document.getElementById('username_error').innerHTML = '×'
+                        }else{
+                            document.getElementById('username_error').innerHTML = '√'
+                        }
+                    }
+                })*/
+                $.ajax({
+                    'type':'GET',
+                    'url':'/user/check_username?username='+value,
+                    'success':function(value){
+                        if(value=='1'){
+                            $('#username_error').html('×')
+                        }else{
+                            $('#username_error').html('√')
+                        }
+                    }
+                })
+            }
+            return flag;
+        }
+        //验证密码,长度是6-10
+        function check_userpwd(){
+            var flag = true;
+            var value = userpwd.value.trim()
+            if(value.length==0){
+                userpwd_error.innerHTML = '必填,不能为空'
+                return false;
+            }else if(value.length<6 || value.length>10){
+                userpwd_error.innerHTML = '长度必须是在6-10之间'
+                return false;
+            }else{
+                 userpwd_error.innerHTML = '√'
+            }
+            return flag;
+        }
+
+        //验证表单
+        function check_myform(){
+            var flag = true;
+            if(!(check_username()&&check_userpwd())){
+                flag = false
+            }
+            //alert(username.onblur())
+            return flag;
+        }
+
+
+
+    </script>
+</head>
+<body>
+    <form method="post" action="/user/register_handler" id="myform">
+        {%csrf_token%}
+        <table>
+            <tr>
+                <td>名字</td>
+                <td><input name="username" id="username"/></td>
+                <td><span id="username_error"></span></td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td><input name="userpwd" type="password" id="userpwd"/></td>
+                <td><span id="userpwd_error"></span></td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="submit" value="注册"/></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+
+
+
+<!--
+js操作form的三种方式：
+
+1. 利用表单在文档中的索引或表单的name属性来引用表单
+
+复制代码 代码如下:
+document.forms[i]  //得到页面中的第i个表单
+document.forms[fromName] //得到页面中相应name的表单
+
+2. 利用表单的id属性
+复制代码 代码如下:
+document.getElementById(formId);
+
+3.
+复制代码 代码如下:
+document.formName;//最为常用的一种方式-->

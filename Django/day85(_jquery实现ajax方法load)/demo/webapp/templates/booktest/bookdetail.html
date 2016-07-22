@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bookdetail.html</title>
+</head>
+<body>
+    <h1>当前书详细信息</h1>
+    <table width="400" border="1">
+        <thead>
+            <tr>
+                <th>标题</th>
+                <th>日期</th>
+                <th>点击量</th>
+                <th>评论</th>
+                <th>封面</th>
+                <th>是否删除</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>{{bookinfo.btitle}}</td>
+            <td>{{bookinfo.bpubdate}}</td>
+            <td>{{bookinfo.bread}}</td>
+            <td>{{bookinfo.bcomment}}</td>
+            <td><img src="/static/media/images/{{bookinfo.bimage}}" width="80"></td>
+            <td><input type="checkbox" {%if bookinfo.isdelete%}checked{%endif%}/></td>
+        </tr>
+    </table>
+    <h1>当前书里英雄的详细信息</h1>
+    <table width="400" border="1">
+        <thead>
+            <tr>
+                <th>名字</th>
+                <th>性别</th>
+                <th>内容</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {%for h in heroinfos%}
+             <tr {%if not forloop.counter|divisibleby:'2' %}style="background-color: red;"{%endif%}>
+                <td>{{h.hname}}</td>
+                <td>{%if h.hgender %}男{%else %}女{%endif %}</td>
+                 {% comment%}
+                <td>{{h.hgender2}}</td>
+                 {% endcomment%}
+                <td>{{h.hcontent}}</td>
+             </tr>
+             {%empty%}
+             <tr>
+                 <td colspan="3">不存在</td>
+             </tr>
+        {%endfor%}
+        </tbody>
+    </table>
+</body>
+</html>
