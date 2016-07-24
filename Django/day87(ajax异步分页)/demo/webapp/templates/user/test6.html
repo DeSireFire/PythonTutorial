@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test2.html</title>
+    <script type="text/javascript">
+        function f1(){
+           var json_str = '{"id":1,"name":"老王"}';
+           alert(typeof(json_str));
+           var json = eval('('+json_str+')');
+           alert(typeof(json));
+           console.log('1+1');
+           console.log(eval('1+1'));
+           console.log('id:'+json.id+',name:'+json['name'])
+        }
+    </script>
+</head>
+<body>
+    <h1>json格式的字符串--->json对象</h1>
+    <div id="msg"></div>
+    <input type="button" onclick="f1()" value="试试"/><br/>
+</body>
+</html>
