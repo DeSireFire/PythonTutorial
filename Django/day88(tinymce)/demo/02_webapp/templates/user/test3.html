@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test2.html</title>
+    <script type="text/javascript">
+        function f1() {
+            //获取XMLHttpRequest对象
+            var xmlhttp;
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest()
+            } else {
+                xmlhttp = new ActiveXObject()
+            }
+            //onreadystatechange 事件
+            xmlhttp.onreadystatechange = function(){
+                //正常响应完
+                if(xmlhttp.readyState==4 && xmlhttp.status==200){
+                    //alert(xmlhttp.responseText)
+                    document.getElementById('msg').innerHTML = '黄焖鸡'
+                }else if(xmlhttp.readyState==1){
+                    document.getElementById('msg').innerHTML = '加载中......'
+                }
+            }
+            //open
+            xmlhttp.open('GET', '/user/test4?id=1&name=laowang', true)
+            //send
+            xmlhttp.send()
+        }
+        function f2() {
+            //获取XMLHttpRequest对象
+            var xmlhttp;
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest()
+            } else {
+                xmlhttp = new ActiveXObject()
+            }
+            //open
+            xmlhttp.open('POST', '/user/test4', true)
+            //如果需要像 HTML 表单那样 POST 数据，请使用 setRequestHeader() 来添加 HTTP 头
+            //xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            //send
+            xmlhttp.send('id=1&name=laowang')
+        }
+
+
+    </script>
+</head>
+<body>
+    <div id="msg"></div>
+    <input type="button" onclick="f1()" value="get"/><br/>
+    <input type="button" onclick="f2()" value="post"/><br/>
+</body>
+</html>
