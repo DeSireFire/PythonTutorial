@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test7.html</title>
+    <script src="/static/js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        function f1(){
+            var head = document.getElementsByTagName('head')[0];
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = '/static/js/js01.js';
+            head.appendChild(script);
+        }
+        function f2(){
+            $.ajax({
+                url:'/static/js/js01.js',
+                jsonpCallback:'hello',
+                dataType:'jsonp',
+                success:function(data){
+                    alert(data.id)
+                    alert(data.name)
+                }
+            })
+        }
+        //回调函数
+        /*function hello(data){
+            alert(data.id)
+            alert(data.name)
+        }*/
+    </script>
+    <!--<script src="/static/js/js01.js"></script>-->
+</head>
+<body>
+    <h1>jsonp 跨域</h1>
+    <div id="msg">
+        <ul></ul>
+    </div>
+    <input type="button" onclick="f1()" value="试试1"/><br/>
+    <input type="button" onclick="f2()" value="试试2"/><br/>
+    <input id="mykw"/>
+</body>
+<script>
+    $(function(){
+       $('#mykw').blur(function(){
+          $.ajax({
+                url:'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+                jsonp:'cb',
+                dataType:'jsonp',
+                data:{
+                    wd:$(this).val()
+                },
+                success:function(data){
+                    $('#msg ul').html('')
+                    $.each(data.s,function(index,item){
+                        var li='<li>'+item+'</li>'
+                        $('#msg ul').append(li)
+                    })
+                }
+
+            })
+       });
+    });
+</script>
+</html>
+
+<!--
+参考网址
+https://baike.baidu.com/item/jsonp
+-->
