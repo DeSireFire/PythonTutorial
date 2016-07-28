@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test2.html</title>
+    <script src="/static/js/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        function f1(){
+           var json_str = '{"id":1,"name":"老王"}';
+           alert(typeof(json_str));
+           var json = eval('('+json_str+')');
+           alert(typeof(json));
+           console.log('1+1');
+           console.log(eval('1+1'));
+           console.log('id:'+json.id+',name:'+json['name'])
+        }
+        function f2(){
+            /*$.get('/static/doc/myjs.js',{'num':1},function(data){
+                $('#msg').html(data)
+            });*/
+            /*$.get('/static/doc/test.txt',{'num':1},function(data){
+                $('#msg').html(data)
+            });*/
+            $.get('/booktest/books_page',{'pagenow':1},function(data){
+                $('#msg').html(data.pagenow)
+            });
+        };
+        function f3(){
+            //$('#msg').html($('form').serialize())
+            //$('#msg').html($('form').serializeArray())
+            //console.log($('form').serializeArray())
+            $.each($('form').serializeArray(),function(index,item){
+                $('#msg').append('name='+item.name+',value='+item.value+'<br/>')
+            })
+        };
+    </script>
+</head>
+<body>
+    <h1>json格式的字符串--->json对象</h1>
+    <div id="msg"></div>
+    <input type="button" onclick="f1()" value="试试1"/><br/>
+    <input type="button" onclick="f2()" value="试试2"/><br/>
+    <input type="button" onclick="f3()" value="试试3"/><br/>
+    <input type="button" onclick="f4()" value="试试4"/><br/>
+
+    <p id="results"><b>Results: </b> </p>
+    <form action="myurl">
+      <select name="single">
+        <option value="1">Single</option>
+        <option value="2">Single2</option>
+      </select>
+      <select name="multiple" multiple="multiple">
+        <option selected="selected">Multiple</option>
+        <option>Multiple2</option>
+        <option selected="selected">Multiple3</option>
+      </select><br/>
+      <input type="checkbox" name="check" value="check1"/> check1
+      <input type="checkbox" name="check" value="check2" checked="checked"/> check2
+      <input type="radio" name="radio" value="radio1" checked="checked"/> radio1
+      <input type="radio" name="radio" value="radio2"/> radio2
+    </form>
+</body>
+</html>
