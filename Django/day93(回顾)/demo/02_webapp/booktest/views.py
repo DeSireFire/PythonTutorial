@@ -102,7 +102,23 @@ def hero_add(request):
         'book_list':book_list
     }
 
-    return render(request, 'booktest/hero_add.html',context)
+    return render(request, 'booktest/hero_edit.html',context)
+
+
+def hero_edit(request):
+    #获取id
+    id = request.GET.get('id')
+    #查询对象
+    heroinfo = HeroInfo.objects.get(pk=id)
+    #准备数据-书
+    book_list = BookInfo.objects.all()
+    #上下文字典
+    context={
+        'book_list':book_list,
+        'heroinfo':heroinfo
+    }
+
+    return render(request, 'booktest/hero_edit.html',context)
 
 
 def hero_add_handler(request):
@@ -124,4 +140,56 @@ def hero_add_handler(request):
     #save
     h.save()
 
-    return HttpResponse('OK')
+    #重定向到查询所有英雄的view
+    return redirect('/booktest/hero_show')
+
+
+def hero_edit_handler(request):
+    # 接受参数
+    id = request.GET.get('id')
+    hname = request.GET.get('hname')
+    hgender = int(request.GET.get('hgender'))
+    hcontent = request.GET.get('hcontent')
+    isdelete = request.GET.get('isdelete',0)
+    hbookinfo_id = request.GET.get('hbookinfo_id')
+    hbookinfo = BookInfo.objects.get(pk=hbookinfo_id)
+
+    # 查询对象
+    h = HeroInfo.objects.get(pk=id)
+    # 修改属性
+    h.hgender = hgender
+    h.hcontent = hcontent
+    h.hname = hname
+    h.hbookinfo = hbookinfo
+    h.isdelete = isdelete
+
+    # update
+    h.save()
+
+    # 重定向到查询所有英雄的view
+    return redirect('/booktest/hero_show')
+
+
+
+
+#查询所有的影响信息
+def hero_show(request):
+    hero_list = HeroInfo.objects.filter(isdelete=0)
+    context={'hero_list':hero_list}
+
+    print(context)
+
+    return render(request, 'booktest/heros.html', context)
+
+#根据id删除
+def hero_delete(request):
+    #获取id
+    id = request.GET.get('id')
+    #查询对象
+    h = HeroInfo.objects.get(pk=id)
+    #修改
+    h.isdelete = 1
+    #保存
+    h.save()
+    # 重定向到查询所有英雄的view
+    return redirect('/booktest/hero_show')

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>hero_add.html</title>
+    <title>hero_edit.html</title>
     <script type="text/javascript" src='/static/tiny_mce/tiny_mce.js'></script>
     <script type="text/javascript">
         tinyMCE.init({
@@ -15,14 +15,14 @@
 
 </head>
 <body>
-<form action="/booktest/hero_add_handler">
+<form action="/booktest/hero_{%if heroinfo%}edit{%else%}add{%endif%}_handler">
     <table>
         <tr>
             <td>
                 名字
             </td>
             <td>
-                <input name="hname"/>
+                <input name="hname" value="{{heroinfo.hname}}"/>
             </td>
         </tr>
          <tr>
@@ -30,8 +30,13 @@
                 性别
             </td>
             <td>
+                {%if heroinfo.hgender%}
                 <input type="radio" value="1" name="hgender" checked/>男
                 <input type="radio" value="0" name="hgender"/>女
+                {%else%}
+                <input type="radio" value="1" name="hgender"/>男
+                <input type="radio" value="0" name="hgender" checked/>女
+                {%endif%}
             </td>
         </tr>
          <tr>
@@ -39,9 +44,10 @@
                 所属书
             </td>
             <td>
+
                 <select name="hbookinfo_id">
                     {%for i in book_list%}
-                    <option value="{{i.id}}">{{i.btitle}}</option>
+                    <option value="{{i.id}}" {%ifequal heroinfo.hbookinfo_id i.id%}selected{%endifequal%}>{{i.btitle}}</option>
                     {%endfor%}
                 </select>
             </td>
@@ -51,12 +57,23 @@
                 内容
             </td>
             <td>
-                <textarea name="hcontent" id="hcontent"></textarea>
+                <textarea name="hcontent" id="hcontent">{{heroinfo.hcontent}}</textarea>
             </td>
         </tr>
+        {%if heroinfo%}
+        <tr>
+            <td>
+                是否已经被删除
+            </td>
+            <td>
+                <input type="checkbox" name="isdelete" {%if heroinfo.isdelete%}checked{%endif%}/>
+            </td>
+        </tr>
+        <input type="hidden" name="id" value="{{heroinfo.id}}"/>
+        {%endif%}
         <tr>
             <td colspan="2">
-                <input type="submit" value="新增"/>
+                <input type="submit" value="保存"/>
             </td>
         </tr>
     </table>
@@ -64,3 +81,13 @@
 </body>
 </html>
 
+<!--修改
+
+    1.全部修改
+    2.部分修改
+
+    实现：
+    根据id查询完整的对象,
+    修改提交的属性
+    update
+-->

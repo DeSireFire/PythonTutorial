@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>heros.html</title>
+</head>
+<body>
+<h1>显示所有的英雄</h1>
+<table width="500" border="1">
+    <thead>
+        <tr>
+            <th>名字</th>
+            <th>性别</th>
+            <th>书籍</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for h in hero_list%}
+        <tr>
+            <td>{{h.hname}}</td>
+            <td>{{h.hgender2}}</td>
+            <td>{{h.hbookinfo.btitle}}</td>
+            <td>
+                <a href="/booktest/hero_edit?id={{h.id}}">编辑</a>
+                <a href="/booktest/hero_delete?id={{h.id}}">删除</a>
+            </td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+<a href="/booktest/hero_add">新增</a>
+</body>
+</html>
+

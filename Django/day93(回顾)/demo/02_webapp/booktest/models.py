@@ -34,6 +34,8 @@ class HeroInfo(models.Model):
     hgender = models.BooleanField()
     hbookinfo = models.ForeignKey(BookInfo)
     hcontent = HTMLField()
+
+    # hbriefintroduction = models.CharField(max_length=200)
     isdelete = models.BooleanField()
 
     def hgender2(self):
@@ -41,6 +43,14 @@ class HeroInfo(models.Model):
             return '男'
         else:
             return '女'
+
+    '''
+    def hbriefintroduction2(self):
+        if len(self.hcontent)>10:
+            return self.hcontent[:10]+'...'
+        else:
+            return self.hcontent
+    '''
 
 
 
