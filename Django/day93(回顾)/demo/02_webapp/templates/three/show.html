@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>show.html</title>
+    <script src="/static/js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //发送请省份求,显示所有的省份
+            get_all_province()
+            //为省绑定事件
+            change_province()
+            //为市绑定事件
+            change_city()
+        });
+        function get_all_province(){
+            $.ajax({
+                url:'/three/get_all_province',
+                success:function(data){
+                   province_list = eval('('+data.province_list+')')
+                   $.each(province_list,function(index,item){
+                       var option='<option value="'+item.pk+'">'+item.fields.pname+'</option>';
+                       $('#province_id').append(option)
+                   })
+                }
+            });
+        };
+        function change_province(){
+            $('#province_id').change(function(){
+                 province_id = $('#province_id').val();
+                 $('#city_id').html('<option value="0">---------</option>')
+                 $('#area_id').html('<option value="0">---------</option>')
+                 if(province_id!=0){
+                     $.ajax({
+                         url: '/three/get_city_by_pid',
+                         data: {'province_id': province_id},
+                         success: function (data) {
+                             city_list = eval('(' + data.city_list + ')')
+                             $.each(city_list, function (index, item) {
+                                 var option = '<option value="' + item.pk + '">' + item.fields.cname + '</option>';
+                                 $('#city_id').append(option);
+                             });
+                         }
+                     });
+                 }
+            });
+        };
+        function change_city(){
+            $('#city_id').change(function(){
+                 city_id = $('#city_id').val();
+                 $('#area_id').html('<option value="0">---------</option>')
+                 if(city_id!=0){
+                     $.ajax({
+                         url: '/three/get_area_by_cid',
+                         data: {'city_id': city_id},
+                         success: function (data) {
+                             area_list = eval('(' + data.area_list + ')')
+                             $('#area_id').html('<option value="0">---------</option>')
+                             $.each(area_list, function (index, item) {
+                                 var option = '<option value="' + item.pk + '">' + item.fields.aname + '</option>';
+                                 $('#area_id').append(option);
+                             });
+                         }
+                     });
+                 }
+            });
+        };
+    </script>
+</head>
+<body>
+<h1>三级联动</h1>
+<div>
+    省:<select name="province_id" id="province_id"><option value="0">---------</option></select>
+    市:<select name="city_id" id="city_id"><option value="0">---------</option></select>
+    区:<select name="area_id" id="area_id"><option value="0">---------</option></select>
+</div>
+</body>
+</html>

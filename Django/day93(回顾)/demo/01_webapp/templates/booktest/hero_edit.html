@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hero_edit.html</title>
+    <script type="text/javascript" src='/static/tiny_mce/tiny_mce.js'></script>
+    <script type="text/javascript">
+        tinyMCE.init({
+            'selector':'#hcontent',
+            'theme':'advanced',
+            'width':400,
+            'height':300
+        });
+    </script>
+
+</head>
+<body>
+<form action="/booktest/hero_edit_handler">
+    <input type="hidden" name="id" value="{{heroinfo.id}}"/>
+    <table>
+        <tr>
+            <td>
+                名字
+            </td>
+            <td>
+                <input name="hname" value="{{heroinfo.hname}}"/>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                性别
+            </td>
+            <td>
+                {%if heroinfo.hgender%}
+                <input type="radio" value="1" name="hgender" checked/>男
+                <input type="radio" value="0" name="hgender"/>女
+                {%else%}
+                <input type="radio" value="1" name="hgender"/>男
+                <input type="radio" value="0" name="hgender" checked/>女
+                {%endif%}
+            </td>
+        </tr>
+         <tr>
+            <td>
+                所属书
+            </td>
+            <td>
+
+                <select name="hbookinfo_id">
+                    {%for i in book_list%}
+                    <option value="{{i.id}}" {%ifequal heroinfo.hbookinfo_id i.id%}selected{%endifequal%}>{{i.btitle}}</option>
+                    {%endfor%}
+                </select>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                内容
+            </td>
+            <td>
+                <textarea name="hcontent" id="hcontent">{{heroinfo.hcontent}}</textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                是否已经被删除
+            </td>
+            <td>
+                <input type="checkbox" name="isdelete" {%if heroinfo.isdelete%}checked{%endif%}/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="保存"/>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+
+<!--修改
+
+    1.全部修改
+    2.部分修改
+
+    实现：
+    根据id查询完整的对象,
+    修改提交的属性
+    update
+-->
