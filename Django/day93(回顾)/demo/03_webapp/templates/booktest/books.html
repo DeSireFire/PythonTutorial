@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>books.html</title>
+    <link rel="shortcut icon" href="/static/images/yong.ico" type="image/x-icon" />
+    <script src="/static/js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+
+        /*异步发送请求,处理响应的数据
+        * pagenow：页码
+        */
+        function page(pagenow){
+            $.ajax({
+               type: "GET",
+               url: "/booktest/books_page",
+               data: {"pagenow":pagenow},
+               success: function(value){
+                   //value = eval("("+value+")")
+                   var bookinfo_list = eval("("+value['bookinfo_list']+")")
+                   var page_range = eval("("+value['page_range']+")")
+                   var pagenow = value['pagenow']
+
+                   var trs=""
+                   for(var i=0;i<bookinfo_list.length;i++){
+                       var b = bookinfo_list[i]
+                       var btitle = b.fields.btitle
+                       var id = b.pk
+
+                       trs+="<tr><td><a href='/booktest/"
+                       trs+=id
+                       trs+="'>"
+                       trs+=btitle
+                       trs+="</a></td></tr>"
+                   };
+                   $("#books tbody").html(trs)
+
+                   var tr="<tr><td>"
+                   for(var i=0;i<page_range.length;i++){
+                       var pagenum = page_range[i]
+
+                       if(pagenum==pagenow){
+                           tr+="<span>"
+                           tr+=pagenum
+                           tr+="</span>"
+                       }else{
+                           tr+="<a href='#'>"
+                           tr+=pagenum
+                           tr+="</a>"
+                       }
+                   };
+                   tr+="</tr>"
+                   $("#books tfoot").html(tr)
+
+               }
+            });
+        };
+        /*动态绑定事件*/
+        function foot_a_click(){
+            $("#books tfoot").on('click','a',function(){
+                page($(this).html())
+                return false;
+            });
+        };
+        /*加载完毕*/
+        $(function(){
+            page(1)
+            foot_a_click()
+        });
+    </script>
+</head>
+<body>
+<table id="books">
+    <thead>
+        <tr>
+            <th>书名</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+    <tfoot>
+
+    </tfoot>
+</table>
+</body>
+</html>
+
+<!--
+    前端做什么？
+
+    1. url
+    2. 参数
+    {pageNow:?}
+    3.处理响应的内容
+
+
+    后端做什么？
+
+    1. 接收参数
+    2. 准备当前页的内容 和 页码  和  当前页码
+    '{k1:v1,k2:v2,k3:v3}'
+    3.响应给前端
+
+
+
+    js --- jquery      $(js对象)
+    jquery --- js      jquery对象.get(0)  or  jquery对象[0]
+
+    this 是js对象
+-->
+
+
+
+
+
+
+
+
+
+<!--http://blog.csdn.net/goupper1991/article/details/50768346-->

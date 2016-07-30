@@ -1,0 +1,2 @@
+老王
+alert('laowang');

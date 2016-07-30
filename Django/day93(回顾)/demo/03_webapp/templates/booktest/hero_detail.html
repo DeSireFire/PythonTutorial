@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hero_detail.html</title>
+    <script type="text/javascript" src='/static/tiny_mce/tiny_mce.js'></script>
+    <script type="text/javascript">
+        tinyMCE.init({
+            'selector':'#hcontent',
+            'theme':'advanced',
+            'width':400,
+            'height':300
+        });
+    </script>
+
+</head>
+<body>
+<form action="/booktest/hero_{%if heroinfo%}edit{%else%}add{%endif%}_handler">
+    <table>
+        <tr>
+            <td>
+                名字
+            </td>
+            <td>
+                {{heroinfo.hname}}
+            </td>
+        </tr>
+         <tr>
+            <td>
+                性别
+            </td>
+            <td>
+                {{heroinfo.hgender2}}
+            </td>
+        </tr>
+         <tr>
+            <td>
+                所属书
+            </td>
+            <td>
+                {{heroinfo.hbookinfo.btitle}}
+            </td>
+        </tr>
+         <tr>
+            <td>
+                内容
+            </td>
+            <td>
+                {%autoescape off%}
+                {{heroinfo.hcontent}}
+                {%endautoescape%}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                是否已经被删除
+            </td>
+            <td>
+                {{heroinfo.isdelete2}}
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
